@@ -4,3 +4,7 @@ BunnyAndQloud - the native Client for the BunnyAndCloud REST Services, built wit
 GUI:
 
 ![BunnyAndQloud 1](https://raw.githubusercontent.com/privet56/BunnyAndQloud/master/bunnyAndQloud_with_3d_explorer.png)
+
+Download on http://bunny-bunnyandcloud.rhcloud.com/native:
+
+![BunnyAndQloud Download 2](https://raw.githubusercontent.com/privet56/BunnyAndQloud/master/bunnyAndQloud_download.png)
