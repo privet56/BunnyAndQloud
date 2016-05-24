@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Installer>
+    <Name>Bunny And Qloud</Name>
+    <Version>1.0.0</Version>
+    <Title>Bunny And Qloud for Windows 64 bit systems</Title>
+    <Publisher>Standalone Client App for Bunny And Cloud</Publisher>
+	<ProductUrl>http://bunny-bunnyandcloud.rhcloud.com/</ProductUrl>
+    <InstallerWindowIcon>bunny</InstallerWindowIcon>
+    <InstallerApplicationIcon>bunny</InstallerApplicationIcon>
+    <Logo>bunny_small.gif</Logo>
+	<Banner>banner.png</Banner>
+	<!-- WizardStyle>Mac</WizardStyle -->
+	<Background>background.png</Background><!-- only by WizardStyle=Mac -->
+	<TitleColor>#CC3300</TitleColor>
+    <StartMenuDir>Bunny And Cloud</StartMenuDir>
+	<MaintenanceToolName>BunnyAndQloudMaintenanceTool</MaintenanceToolName>
+    <TargetDir>@HomeDir@/BunnyAndQloud</TargetDir>
+	<ControlScript>controller.qs</ControlScript>
+</Installer>

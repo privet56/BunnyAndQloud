@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/">
+		<file>3d/Rabbits3d.qml</file>
+		<file>3d/o/lea/lea.mtl</file>
+		<file>3d/o/lea/lea.obj</file>
+		<file>3d/o/lea/lea_Texture_0.jpg</file>
+		<file>3d/o/lea/lea_Texture_1.jpg</file>
+		<file>3d/o/lea/lea_Texture_2.jpg</file>
+    </qresource>
+</RCC>

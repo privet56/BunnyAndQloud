@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package>
+    <DisplayName>Bunny And Qloud for Windows 64 bit systems</DisplayName>
+    <Description>Install the Bunny And Qloud Client.</Description>
+    <Version>1.0.0-1</Version>
+    <ReleaseDate>2015-09-21</ReleaseDate>
+    <Licenses>
+        <License name="Bunny And Qloud Public License Agreement" file="license.txt" />
+    </Licenses>
+    <Default>script</Default>
+    <Script>installscript.qs</Script>
+    <!-- UserInterfaces>
+        <UserInterface>page.ui</UserInterface>
+    </UserInterfaces -->
+    <Default>true</Default>
+    <ForcedInstallation>true</ForcedInstallation>
+    <Essential>true</Essential>
+</Package>
