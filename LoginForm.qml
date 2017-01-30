@@ -14,10 +14,10 @@ import QtQuick.Particles 2.0
 //import QtWebKit 3.0
 //import QtWebKit.experimental 1.0
 
-import QtWebEngine 1.0
+//import QtWebEngine 1.0
 
 import "src/buttons"
-//import "3d"
+//import "3d"   //we do it with alias in the qrc
 
 import "src/variables/fontawesome.js" as FontAwesome
 
@@ -34,7 +34,7 @@ Item
 
     onVisibleChanged:
     {
-        wv.url = visible ? qmlHelper.getAppDirAsUrl()+"/3d/3drabbitexplorer/3drabbitexplorer.html" : "about:blank";
+        //wv.url = visible ? qmlHelper.getAppDirAsUrl()+"/3d/3drabbitexplorer/3drabbitexplorer.html" : "about:blank";
         wvExpander.visible = visible ? true : false;
     }
 
@@ -390,7 +390,7 @@ Item
                  console.log("status:"+loadRequest.status+" eCode: "+loadRequest.errorCode+"(="+loadRequest.errorString+") url:"+loadRequest.url)
         }
     }*/
-
+    /*
     WebEngineView
     {
         id: wv
@@ -415,6 +415,41 @@ Item
         width: parent.width
         anchors.top: gridlayout.bottom
         anchors.bottom: parent.bottom
+    }*/
+
+    C3d
+    {
+        id: canvas3d
+
+        AnimatedImage
+        {
+            id: wvExpander
+            visible: parent.visible
+            z: parent.z + 1
+            anchors.top: parent.top
+            anchors.right: parent.right
+            source: "res/expand.gif"
+            width: 32; height: width
+            smooth: true
+            MouseArea
+            {
+                anchors.fill: parent
+                onClicked: LoginFormJs.on3DBunnyExplorerClick(parent.parent, parent)
+            }
+        }
+
+        width: parent.width
+        anchors.top: gridlayout.bottom
+        anchors.bottom: parent.bottom
+        onRotationStopped:
+        {
+            if(textureSource)textureSource.z = 1 // Bring the UI to the foreground so that it can be interacted with
+        }
+        onRotationStarted:
+        {
+            // Hide the texture source behind canvas to ensure UI cannot be interacted while the phone is rotating.
+            if(textureSource)textureSource.z = -1
+        }
     }
 
     Component
@@ -535,6 +570,6 @@ Item
     Component.onCompleted:
     {
         curtainTimer.restart();
-        wv.url = qmlHelper.getAppDirAsUrl()+"/3d/3drabbitexplorer/3drabbitexplorer.html";
+        //wv.url = qmlHelper.getAppDirAsUrl()+"/3d/3drabbitexplorer/3drabbitexplorer.html";
     }
 }

@@ -5,7 +5,7 @@
 #include "filereader.h"
 #include "qmlhelper.h"
 
-#include <QtWebEngine/QtWebEngine>
+//#include <QtWebEngine/QtWebEngine>
 
 //#define use_3d
 
@@ -40,7 +40,7 @@ int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
 
-    QtWebEngine::initialize();
+//    QtWebEngine::initialize();
 
 #ifdef use_3d
     app.quitOnLastWindowClosed();

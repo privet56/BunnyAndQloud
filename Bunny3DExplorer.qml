@@ -10,7 +10,7 @@ import QtQuick.Layouts 1.1
 //import QtWebKit 3.0
 //import QtWebKit.experimental 1.0
 
-import QtWebEngine 1.0
+//import QtWebEngine 1.0
 
 //import "3d"
 //import "./js/rabbit3dexplorer.js" as Rabbit3dexplorer
@@ -21,6 +21,22 @@ Item
     height: 400
     antialiasing: true
 
+    C3d
+    {
+        id: canvas3d
+        anchors.fill:parent
+        onRotationStopped:
+        {
+            if(textureSource)textureSource.z = 1 // Bring the UI to the foreground so that it can be interacted with
+        }
+        onRotationStarted:
+        {
+            // Hide the texture source behind canvas to ensure UI cannot be interacted while the phone is rotating.
+            if(textureSource)textureSource.z = -1
+        }
+    }
+
+    /*
     WebEngineView
     {
         id: wv
@@ -32,4 +48,5 @@ Item
     {
         wv.url = qmlHelper.getAppDirAsUrl()+"/3d/3drabbitexplorer/3drabbitexplorer.html"
     }
+    */
 }

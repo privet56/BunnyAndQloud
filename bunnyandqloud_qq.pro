@@ -1,9 +1,10 @@
 TEMPLATE = app
 
-QT += qml quick widgets declarative opengl location positioning multimedia
+QT += qml quick widgets opengl location positioning multimedia
+#QT += declarative
 #QT += webkit
 #QT += 3dcore 3drenderer 3dinput 3dquick
-QT += webengine
+#QT += webengine
 
 TARGET.CAPABILITY += SwEvent
 
@@ -14,7 +15,7 @@ SOURCES += main.cpp \
     qmlhelper.cpp
 
 RESOURCES += qml.qrc
-#RESOURCES += 3d.qrc
+RESOURCES += 3d.qrc
 RESOURCES += pics.qrc
 RESOURCES += res.qrc
 
