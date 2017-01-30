@@ -1,6 +1,3 @@
-/**
- * @author mrdoob / http://mrdoob.com/
- */
 
 THREE.OBJLoader = function ( manager ) {
 

@@ -31,7 +31,7 @@ function initializeGL(canvas, textureSource)
     sphere.side = THREE.BackSide;
     sphere.scale.x = -1;
     scene.add(sphere);
-    if (sphereImage && !isAndroid)
+    if (sphereImage)
     {
         var sphereTexture = textureLoader.load(sphereImage, updateEnvMap);
         sphereTexture.mapping = THREE.UVMapping;
@@ -60,36 +60,34 @@ function initializeGL(canvas, textureSource)
 }
 function makeBunny()
 {
-    //setTimeout(function() {
-        //LOAD MESH(ES)
-        var mtlLoader = new THREE.MTLLoader();
-        mtlLoader.setPath('');
-        mtlLoader.load( 'lea.mtl', function( materials ) {
+    //LOAD MESH(ES)
+    var mtlLoader = new THREE.MTLLoader();
+    mtlLoader.setPath('');
+    mtlLoader.load( 'lea.mtl', function( materials )
+    {
+        materials.preload();
 
-            materials.preload();
+        var objLoader = new THREE.OBJLoader();
+        objLoader.setMaterials( materials );
+        objLoader.setPath('');
+        objLoader.load( 'lea.obj', function ( _lea )
+        {
+            lea = _lea;
 
-            var objLoader = new THREE.OBJLoader();
-            objLoader.setMaterials( materials );
-            objLoader.setPath('');
-            objLoader.load( 'lea.obj', function ( _lea ) {
+            lea.scale.set(0.7, 0.7, 0.7);
+            lea.translateX(-12);
+            lea.translateZ(-12);
 
-                lea = _lea;
+            lea.name = "lea";
+            lea.rotation.x = 4.7;
+            lea.rotation.y = -4.7;
 
-                lea.scale.set(0.7, 0.7, 0.7);
-                lea.translateX(-12);
-                lea.translateZ(-12);
+            updateEnvMap();
 
-                lea.name = "lea";
-                lea.rotation.x = 4.7;
-                lea.rotation.y = -4.7;
-
-                updateEnvMap();
-
-                addFloor(lea);
-                scene.add( lea );
-            });
+            addFloor(lea);
+            scene.add( lea );
         });
-    //}, 555);
+    });
 }
 
 function addFloor(lea)
@@ -116,7 +114,7 @@ function addFloor(lea)
 
 function updateEnvMap()
 {
-    if (lea && !isAndroid)
+    if (lea)
     {
         // Take a snapshot of the scene using cube camera to create environment map for case
         if (lea.material)
@@ -142,20 +140,28 @@ function resizeGL(canvas)
 
 function paintGL(canvas)
 {
-    if (lea && !isAndroid)
+    if (lea)
     {
         var cameraRad = degToRad(canvas.cameraAngle);
         var lightRad = cameraRad - 0.8;
-        if(lea)
-        {
-            lea.rotation.x = degToRad(canvas.xRotAnim);
-            lea.rotation.y = camera.rotation.y;//degToRad(canvas.yRotAnim);
-            //lea.rotation.z = cameraRad + degToRad(canvas.zRotAnim);
 
-            lea.position.x = (-camera.position.x) * 9;
-        }
         camera.position.x = canvas.distance * Math.sin(cameraRad);
         camera.position.z = canvas.distance * Math.cos(cameraRad);
+
+        if(lea)
+        {
+            //lea.rotation.x = degToRad(canvas.xRotAnim);
+            //lea.rotation.y = degToRad(canvas.yRotAnim);
+            //lea.rotation.z = degToRad(canvas.zRotAnim);
+
+            //lea.rotation.x = camera.rotation.x;
+            lea.rotation.y = camera.rotation.y;
+            lea.rotation.z = camera.rotation.z;
+
+            lea.position.x = (-camera.position.x) * 9;
+            lea.position.x = (-camera.position.x) * 9;
+            lea.position.z = (-camera.position.z) * 3;
+        }
 
         cameraLight.position.x = (canvas.distance + 2) * Math.sin(lightRad);
         cameraLight.position.z = (canvas.distance + 2) * Math.cos(lightRad);
