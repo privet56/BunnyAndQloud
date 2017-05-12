@@ -8,3 +8,5 @@ GUI:
 Download on http://bunny-bunnyandcloud.rhcloud.com/native (or in the releases section of this repo):
 
 ![BunnyAndQloud Download 2](https://raw.githubusercontent.com/privet56/BunnyAndQloud/master/bunnyAndQloud_download.png)
+
+![bunnyandcloud.video.fearless.bunny.crossing.creek.gif](https://github.com/privet56/BunnyAndCloud/blob/master/public/assets/img/bunnyandcloud.video.fearless.bunny.crossing.creek.gif?raw=true)
